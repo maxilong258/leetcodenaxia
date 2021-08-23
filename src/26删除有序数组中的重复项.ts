@@ -12,5 +12,5 @@ function removeDuplicates(nums: number[]): number {
       j++;
     }
   }
-  return i+1;
+  return i + 1;
 };
