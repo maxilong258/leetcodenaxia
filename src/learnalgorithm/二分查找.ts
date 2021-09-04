@@ -2,9 +2,10 @@ function binarySearch(arr: number[], key: number): number {
   let low = 0
   let high = arr.length - 1
   while(low <= high){
-    let mid = (high + low) / 2
+    // let mid = (high + low) / 2
+    let mid = 1 + (high - low) / 2
     if (key == arr[mid]) {
-      return  mid;
+      return mid;
     } else if (key > arr[mid]) {
       low = mid + 1;
     } else if (key < arr[mid]) {
