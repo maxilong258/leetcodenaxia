@@ -12,7 +12,7 @@ class TreeNode {
 }
 
 
-function levelOrder(root: TreeNode | null): number[][] {
+function levelOrder102(root: TreeNode | null): number[][] {
   const res:number[][] = []
   if (root === null) return res
   const queue = []

@@ -1,5 +1,5 @@
 function levelOrder(root: Node | null): number[][] {
-	const res = []
+	const res: any = []
   if (root === null) return res
   const queue = []
   queue.push(root)
@@ -7,7 +7,7 @@ function levelOrder(root: Node | null): number[][] {
     let len = queue.length
     const level = []
     for (let i = 0; i < len; i++) {
-      const cur = queue.shift()
+      const cur: any = queue.shift()
       level.push(cur.val)
       queue.push(...cur.children)
     }
