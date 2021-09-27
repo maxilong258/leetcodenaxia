@@ -1,27 +1,29 @@
-function findCheapestPrice(n: number, flights: number[][], src: number, dst: number, k: number): number {
+function networkDelayTime(times: number[][], n: number, k: number): number {
   const graph = new Map()
-  for (let edge of flights) {
-    if (graph.has(edge[0])) graph.get(edge[0]).push([edge[1], k, edge[2]])
-    else graph.set(edge[0], [[edge[1], k, edge[2]]])
+  for (let time of times) {
+    if (graph.get(time[0])) graph.get(time[0]).push([time[1], time[2]])
+    else graph.set(time[0], [[time[1], time[2]]])
   }
-  console.log(graph)
-  const heap = new MinHeap123((a: number[], b: number[]) => {return a[2] - b[2]})
-  heap.offer([src, k, 0])
-  console.log(heap)
+  const costs = new Map()
+  const heap = new MinHeap743((a: any, b: any) => a[1] - b[1])
+  heap.offer([k, 0])
   while (heap.size()) {
     const cur = heap.poll()
-    if (cur[0] === dst) return cur[2]
-    if (cur[1] >= 0 && graph.has(cur[0])) {
-      for (let next of graph.get(cur[0])) {
-        heap.offer([next[0], next[1] - 1, next[2] + cur[2]])
-        console.log(heap)
+    if (costs.has(cur[0])) continue
+    costs.set(cur[0], cur[1])
+    if (graph.has(cur[0])) {
+      for (let nei of graph.get(cur[0])) {
+        if (!costs.has(nei[0])) heap.offer([nei[0], nei[1] + cur[1]])
       }
     }
   }
-  return -1
+  if (costs.size !== n) return -1
+  let res = 0
+  for (let x of costs.values()) res = Math.max(res, x)
+  return res
 };
 
-class MinHeap123 {
+class MinHeap743 {
   data: number[] | any
   comparator: Function
   constructor(comparator: Function = (a: any, b: any) => a - b, data = [] ) {

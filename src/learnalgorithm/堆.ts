@@ -1,9 +1,10 @@
 class MinHeap {
   data: number[] | any
   comparator: Function
-  constructor(data = []) {
+  constructor(comparator: Function = (a: any, b: any) => a - b, data = [] ) {
     this.data = data;
-    this.comparator = (a: any, b: any) => a - b;
+    // this.comparator = (a: any, b: any) => a[1] - b[1];
+    this.comparator = comparator
     this.heapify();
   }
 

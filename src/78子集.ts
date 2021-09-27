@@ -1,10 +1,10 @@
-function subsets(nums) {
-  const res = []
+function subsets(nums: number[]): number[][] {
+  const res: number[][] = []
   dfs(res, nums, [], 0)
   return res
 };
 
-function dfs(res, nums, cur, index) {
+function dfs(res: number[][], nums: number[], cur: number[], index: number) {
   if (index >= nums.length) {
     res.push(Array.from(cur))
     return
@@ -14,5 +14,3 @@ function dfs(res, nums, cur, index) {
   cur.pop()
   dfs(res, nums, cur, index + 1)
 }
-
-console.log(subsets([1,2,3]))
