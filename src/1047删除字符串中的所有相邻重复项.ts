@@ -8,4 +8,18 @@ function removeDuplicates1047(s: string): string {
     }
   }
   return stack.join('')
-};
+};                                                                                                                                                                      
+
+//双指针方法
+// function removeDuplicates(s: string): string {
+//   let i = 0
+//   let j = 0
+//   const arr = s.split('')
+//   while (j < arr.length) {
+//     arr[i] = arr[j]
+//     if (i > 0 && arr[i - 1] === arr[i]) i -= 2
+//     j++
+//     i++
+//   }
+//   return arr.slice(0, i).join('')
+// };

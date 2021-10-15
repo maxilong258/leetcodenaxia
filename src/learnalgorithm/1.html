@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function longestPalindrome(s) {
+      debugger
+      const range = [0, 0]
+      let l = s.length
+      if (l === 0 || l === 1) return s
+      const arr = s.split('')
+      for (let i = 1; i < l; i++) {
+        helper(arr, l, i, i)
+        helper(arr, l, i-1, i)
+      }
+      return s.substring(range[0], range[1])
+
+      function helper(ss, len, start, end ) {
+        while (start >= 0 && end <= len-1) {
+          if (ss[start] === ss[end]) {
+            start--
+            end++
+          } else {
+            break
+          }
+        }
+        if (end - (start + 1) > range[1] - range[0]) {
+          range[0] = start + 1
+          range[1] = end
+        }
+      }
+    }
+    longestPalindrome('123123123sadqw')
+  </script>
+</body>
+</html>

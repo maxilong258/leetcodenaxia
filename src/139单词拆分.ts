@@ -1,8 +1,7 @@
 function wordBreak(s: string, wordDict: string[]): boolean {
-  const n = s.length
-  let memo: boolean[] = new Array(n + 1).fill(null)
-  return dfs(s, n, new Set([...wordDict]))
-  function dfs(s: string, len: number, dict: Set<string>): boolean {
+  const memo = new Array(s.length + 1).fill(null)
+  return dfs(s, s.length, new Set(wordDict))
+  function dfs(s: string, len: number, dict: Set<string>) {
     if (len === 0) return true
     if (memo[len] !== null) return memo[len]
     memo[len] = false
@@ -16,5 +15,5 @@ function wordBreak(s: string, wordDict: string[]): boolean {
       }
     }
     return memo[len]
-  }
-}
+  } 
+};

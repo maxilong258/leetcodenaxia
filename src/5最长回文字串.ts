@@ -1,4 +1,5 @@
 function longestPalindrome(s: string): string {
+  debugger
   const range = [0, 0]
   let l = s.length
   if (l === 0 || l === 1) return s
