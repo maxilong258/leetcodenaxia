@@ -4,17 +4,14 @@ function findCheapestPrice(n: number, flights: number[][], src: number, dst: num
     if (graph.has(edge[0])) graph.get(edge[0]).push([edge[1], k, edge[2]])
     else graph.set(edge[0], [[edge[1], k, edge[2]]])
   }
-  console.log(graph)
   const heap = new MinHeap787((a: number[], b: number[]) => {return a[2] - b[2]})
   heap.offer([src, k, 0])
-  console.log(heap)
   while (heap.size()) {
     const cur = heap.poll()
     if (cur[0] === dst) return cur[2]
     if (cur[1] >= 0 && graph.has(cur[0])) {
       for (let next of graph.get(cur[0])) {
         heap.offer([next[0], cur[1] - 1, next[2] + cur[2]])
-        console.log(heap)
       }
     }
   }

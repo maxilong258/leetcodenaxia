@@ -1,21 +1,20 @@
 class WordDictionary {
-  map
+  map: Map<number, string[]> | any
   constructor() {
     this.map = new Map()
   }
 
-  addWord(word) {
+  addWord(word: string): void {
     let len = word.length
     if (this.map.has(len)) this.map.get(len).push(word)
     else this.map.set(len, [word])
-    console.log(this.map)
   }
 
-  search(word) {
+  search(word: string): boolean {
     let len = word.length
     if (!this.map.has(len)) return false
-    let c1
-    let c2 
+    let c1: string
+    let c2: string 
     for (let w of this.map.get(len)) { 
       let flag = true
       for (let i = 0; i < len; i++) {
@@ -31,10 +30,3 @@ class WordDictionary {
     return false
   }
 }
-const a = new WordDictionary()
-a.addWord('bad')
-a.addWord('dad')
-a.addWord('mad')
-a.search('pad')
-a.search('.ad')
-a.search('b..')
