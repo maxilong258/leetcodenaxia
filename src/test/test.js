@@ -1,40 +1,20 @@
-class WordDictionary {
-  map
-  constructor() {
-    this.map = new Map()
-  }
-
-  addWord(word) {
-    let len = word.length
-    if (this.map.has(len)) this.map.get(len).push(word)
-    else this.map.set(len, [word])
-    console.log(this.map)
-  }
-
-  search(word) {
-    let len = word.length
-    if (!this.map.has(len)) return false
-    let c1
-    let c2 
-    for (let w of this.map.get(len)) { 
-      let flag = true
-      for (let i = 0; i < len; i++) {
-        c1 = w.charAt(i)
-        c2 = word.charAt(i)
-        if (c1 !== '.' && c2 !== '.' && c1 !== c2) {
-          flag = false
-          break
-        }
-      }
-      if (flag) return true
+function rob(root) {
+  if (root === null) return 0
+  let withRootcount = 0
+  let withoutRootCount = 0
+  let hasRoot = true
+  const queue = new Array()
+  queue.push(root)
+  while (queue.length) {
+    let len = queue.length
+    for (let i = 0; i < len; i++) {
+      const curr = queue.shift()
+      if (hasRoot) withRootcount += curr.val
+      else withoutRootCount += curr.val
+      if (curr.left !== null) queue.push(curr.left)
+      if (curr.right !== null) queue.push(curr.right)
     }
-    return false
+    hasRoot = !hasRoot
   }
-}
-const a = new WordDictionary()
-a.addWord('bad')
-a.addWord('dad')
-a.addWord('mad')
-a.search('pad')
-a.search('.ad')
-a.search('b..')
+  return Math.max(withRootcount, withoutRootCount)
+};

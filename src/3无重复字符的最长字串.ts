@@ -1,21 +1,16 @@
-function lengthOfLongestSubstring(str: string): number {
-  const set = new Set()
+function lengthOfLongestSubstring(s: string): number {
+  let res = 0
   let i = 0
   let j = 0
-  let maxlength = 0
-  if (str.length === 0) return 0
-  while (i < str.length) {
-    if (!set.has(str[i])) {
-      set.add(str[i])
-      maxlength = Math.max(maxlength, set.size)
-    } else {
-      while (set.has(str[i])) {
-        set.delete(str[j])
-        j++
-      }
-      set.add(str[i])
+  const set = new Set()
+  while (j < s.length) {
+    while (set.has(s[j])) {
+      set.delete(s[i])
+      i++
     }
-    i++
+    set.add(s[j])
+    if (res < set.size) res = set.size
+    j++
   }
-  return maxlength
+  return res
 };
