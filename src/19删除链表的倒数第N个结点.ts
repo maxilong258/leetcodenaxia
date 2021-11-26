@@ -10,9 +10,6 @@
 // function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
 //   return removeNode (head, n) === n ? head.next : head
 
-// function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
-//   return removeNode (head, n) === n ? head.next : head
-
 //   function removeNode(node: ListNode, n: number) {
 //     if (node.next == null) return 1
 //     let m = removeNode(node.next, n)
