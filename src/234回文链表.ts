@@ -11,7 +11,7 @@ function reverseList234(head: ListNode | null): ListNode | null {
   return prev
 };
 
-function isPalindrome(head: ListNode | null): boolean {
+function isPalindrome234(head: ListNode | null): boolean {
   let runner: any = head
   let chaser: any = head
   while (runner !== null && runner.next !== null) {

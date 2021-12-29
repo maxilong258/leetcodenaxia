@@ -13,3 +13,23 @@ class CQueue {
     else return -1
   }
 }
+
+// class CQueue {
+//   a: number[]
+//   b: number[]
+//   constructor() {
+//     this.a = []
+//     this.b = []
+//   }
+
+//   appendTail(value: number): void {
+//     this.a.push(value)
+//   }
+
+//   deleteHead(): number {
+//     while (this.a.length) this.b.push(this.a.pop())
+//     let res = this.b.length ? this.b.pop() : -1
+//     while (this.b.length) this.a.push(this.b.pop())
+//     return res
+//   }
+// }
